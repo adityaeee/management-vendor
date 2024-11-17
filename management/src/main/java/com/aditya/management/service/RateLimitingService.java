@@ -1,8 +1,10 @@
 package com.aditya.management.service;
 
 import com.aditya.management.DTO.response.JwtClaims;
+import com.aditya.management.service.intrface.JwtService;
 import io.github.bucket4j.*;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.Duration;
@@ -10,21 +12,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class RateLimitingService {
 
-    private final JwtServiceImpl jwtService;
     private final Map<String, Bucket> userBuckets;
+    final String AUTO_HEADER = "Authorization";
+    private final HttpServletRequest httpServletRequest;
+    private final JwtService jwtService;
 
-    @Autowired
-    public RateLimitingService(JwtServiceImpl jwtService) {
-        this.jwtService = jwtService;
-        this.userBuckets = new HashMap<>();
-    }
 
-    // Fungsi untuk mendapatkan Bucket untuk pengguna berdasarkan accountId
     private Bucket getBucketForUser(String accountId) {
         if (!userBuckets.containsKey(accountId)) {
-            Bandwidth limit = Bandwidth.classic(5, Refill.greedy(5, Duration.ofMinutes(1))); // 5 requests per minute
+            Bandwidth limit = Bandwidth.classic(5, Refill.greedy(5, Duration.ofSeconds(60)));
             Bucket bucket = Bucket.builder()
                     .addLimit(limit)
                     .build();
@@ -33,37 +32,30 @@ public class RateLimitingService {
         return userBuckets.get(accountId);
     }
 
-    // Fungsi untuk memeriksa apakah pengguna dapat melakukan request
-    public boolean tryConsume(HttpServletRequest httpServletRequest) {
-        String bearerToken = httpServletRequest.getHeader("Authorization");
 
-        // Ambil claims dari JWT token
+    public boolean tryConsume() {
+        String bearerToken = httpServletRequest.getHeader(AUTO_HEADER);
         JwtClaims jwtClaims = jwtService.getClaimsByToken(bearerToken);
 
         if (jwtClaims != null) {
-            String accountId = jwtClaims.getAccountId();  // Ambil accountId dari JWT
+            String accountId = jwtClaims.getAccountId();
 
-            // Dapatkan bucket untuk pengguna dan coba konsumsi token
             Bucket bucket = getBucketForUser(accountId);
-            return bucket.tryConsume(1);  // Mengkonsumsi 1 token untuk request ini
+            return bucket.tryConsume(1);
         }
-        return false;  // Jika token tidak valid atau tidak ada, mengembalikan false
+        return false;
     }
 
-    // Fungsi untuk mendapatkan jumlah request yang tersisa
-    public long getRemainingRequests(HttpServletRequest httpServletRequest) {
-        String bearerToken = httpServletRequest.getHeader("Authorization");
-
-        // Ambil claims dari JWT token
+    public long getRemainingRequests() {
+        String bearerToken = httpServletRequest.getHeader(AUTO_HEADER);
         JwtClaims jwtClaims = jwtService.getClaimsByToken(bearerToken);
 
         if (jwtClaims != null) {
-            String accountId = jwtClaims.getAccountId();  // Ambil accountId dari JWT
+            String accountId = jwtClaims.getAccountId();
 
-            // Dapatkan bucket untuk pengguna
             Bucket bucket = getBucketForUser(accountId);
             return bucket.getAvailableTokens();
         }
-        return 0;  // Jika token tidak valid atau tidak ada, mengembalikan 0
+        return 0;
     }
 }

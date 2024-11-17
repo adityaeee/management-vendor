@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -56,9 +57,9 @@ public class VendorController {
 
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping
-    public ResponseEntity<BaseResponse> getAllVendor(HttpServletRequest httpRequest) {
+    public ResponseEntity<BaseResponse> getAllVendor() {
 
-        if (rateLimitingService.tryConsume(httpRequest)) {
+        if (rateLimitingService.tryConsume()) {
             List<Vendor> vendor = vendorService.getAllVendor();
 
             BaseResponse response = CommonResponse.<List<Vendor>>builder()
@@ -69,8 +70,12 @@ public class VendorController {
 
             return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(null);
-        }
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(
+                    CommonResponse.<List<Vendor>>builder()
+                            .statusCode(HttpStatus.TOO_MANY_REQUESTS.value())
+                            .message("Rate limit exceeded, try again later!")
+                            .build()
+            );}
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
