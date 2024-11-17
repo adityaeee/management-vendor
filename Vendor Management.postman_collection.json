@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "941dd059-4188-46dd-8e45-1d6b5c84bbbe",
+		"name": "Vendor Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20141020"
+	},
+	"item": [
+		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "Create Vendor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtYW5hZ2VtZW50IiwiaWF0IjoxNzMxNzc4ODY0LCJleHAiOjE3MzIwMzgwNjQsInN1YiI6Ijc2NDYzYjVhLTg5MGYtNDNkYy1hNDZkLWY4YmZjMGEzMWRjZCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdfQ.xhvkYzWPFijZSORsGsDBHiXOsUp8mIPx89x_ayyeYA-9442rDwsM2uIgpIupKAmPAapuw0i_DMxbwEIvcYJplg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"PT Akina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vendor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtYW5hZ2VtZW50IiwiaWF0IjoxNzMxODMxNDI0LCJleHAiOjE3MzIwOTA2MjQsInN1YiI6Ijc2NDYzYjVhLTg5MGYtNDNkYy1hNDZkLWY4YmZjMGEzMWRjZCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdfQ.zyijV56UpvETewsarf_L5VW3hADCDdE-7-1XAJi-li27W8qNsKNPANX_56GZLPv48Q2NV9VnuJi9DEbFhaTVhw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"c694daa6-76d0-4909-be58-9f57a6bd326d\",\r\n    \"name\" : \"PT Akina Multi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vendors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtYW5hZ2VtZW50IiwiaWF0IjoxNzMxODMxNDI0LCJleHAiOjE3MzIwOTA2MjQsInN1YiI6Ijc2NDYzYjVhLTg5MGYtNDNkYy1hNDZkLWY4YmZjMGEzMWRjZCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdfQ.zyijV56UpvETewsarf_L5VW3hADCDdE-7-1XAJi-li27W8qNsKNPANX_56GZLPv48Q2NV9VnuJi9DEbFhaTVhw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vendor By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtYW5hZ2VtZW50IiwiaWF0IjoxNzMxODMxNDI0LCJleHAiOjE3MzIwOTA2MjQsInN1YiI6Ijc2NDYzYjVhLTg5MGYtNDNkYy1hNDZkLWY4YmZjMGEzMWRjZCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdfQ.zyijV56UpvETewsarf_L5VW3hADCDdE-7-1XAJi-li27W8qNsKNPANX_56GZLPv48Q2NV9VnuJi9DEbFhaTVhw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vendor/c694daa6-76d0-4909-be58-9f57a6bd326d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vendor",
+								"c694daa6-76d0-4909-be58-9f57a6bd326d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vendor By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtYW5hZ2VtZW50IiwiaWF0IjoxNzMxNzc4ODY0LCJleHAiOjE3MzIwMzgwNjQsInN1YiI6Ijc2NDYzYjVhLTg5MGYtNDNkYy1hNDZkLWY4YmZjMGEzMWRjZCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdfQ.xhvkYzWPFijZSORsGsDBHiXOsUp8mIPx89x_ayyeYA-9442rDwsM2uIgpIupKAmPAapuw0i_DMxbwEIvcYJplg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vendor/69a570e2-6c93-442a-b702-be95b16538a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vendor",
+								"69a570e2-6c93-442a-b702-be95b16538a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"username\": \"aditya\",\r\n//   \"password\": \"aditya\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"username\": \"admin\",\r\n//   \"password\": \"12345\"\r\n// }\r\n\r\n{\r\n  \"username\": \"aditya\",\r\n  \"password\": \"aditya\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
