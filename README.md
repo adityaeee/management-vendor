@@ -15,10 +15,10 @@ Sebuah sistem CRUD dasar dalam manajemen vendor yang mengimplementasikan fitur s
 
 
 #  Run Locally
-
-- Setelah repository ini di clone, Install dependensi sistem management vendor dengan menggunakan Maven, jika menggunakan intellij bisa langsung klik icon maven, atau bisa dengan perintah berikut:
+- Clone Repository
+- Setelah repository ini di clone, Install dependensi sistem management vendor dengan menggunakan Maven, jika menggunakan intellij bisa langsung klik icon maven, atau bisa dengan perintah di bawah ini, Pastikan Maven sudah terinstal dan dikonfigurasi di sistem Anda
 ```cmd
-mvn install
+mvn clean install
 ```
 
 - Buat database baru postgreSql dengan nama "_**vendor**_".
@@ -36,7 +36,7 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 - Jalankan sistem di main class.
 
 - Setiap endpoint menggunakan Authorization, kecuali register dan login, sehingga untuk endpoint lainnya harus menyertakan token di header dengan Auth Type  yaitu _Bearer token_.
-by default akun super adminnya terinisialisasi segera setelah program dijalankan, berikut akunnya:
+By default, akun super adminnya terinisialisasi segera setelah program dijalankan, berikut akunnya:
 ```json
 {
     "username": "admin",
@@ -49,7 +49,7 @@ by default akun super adminnya terinisialisasi segera setelah program dijalankan
 
 
 # API Reference
-Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adalah file ekspor dari API Management Vendor. Silakan unduh dan impor file tersebut ke Postman jika diperlukan
+Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adalah file export dari API Management Vendor. Silakan unduh dan import file tersebut ke Postman jika diperlukan
 
 [![GPLv3 Collection](https://img.shields.io/badge/Collection-Postman-yellow.svg)](https://github.com/adityaeee/management-vendor/blob/master/Vendor%20Management.postman_collection.json)
 
@@ -128,7 +128,7 @@ Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adala
 |:-----------------|:--------|:--------------------------------------|
 | `Authorization`  | `Bearer Token` | **Required**. TOKEN with ROLE_ADMIN or ROLE_USER |
 
-- **Request**
+- **Request Body**
 ```json
 {
     "name" : "PT Akina"
@@ -140,10 +140,10 @@ Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adala
 ```json
 {
     "statusCode": 200,
-    "message": "successfully update data vendor",
+    "message": "successfully create data vendor",
     "data": {
-        "id": "cf6485a5-057e-4a89-a96f-b7be1ab29e7d"
-        "name": "PT Akina",
+        "id": "cf6485a5-057e-4a89-a96f-b7be1ab29e7d",
+        "name": "PT Akina"
     }
 }
 ```
@@ -168,12 +168,12 @@ Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adala
     "message": "Successfully retrieved vendors",
     "data": [
         {
-            "id": "1a050af6-7b4d-458f-a0e4-653ac2245e08"
             "name": "PT Akina",
+            "id": "1a050af6-7b4d-458f-a0e4-653ac2245e08"
         },
         {
-            "id": "69a570e2-6c93-442a-b702-be95b16538a0"
             "name": "PT Biskies",
+            "id": "69a570e2-6c93-442a-b702-be95b16538a0"
         }
     ]
 }
@@ -204,8 +204,8 @@ Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adala
     "statusCode": 200,
     "message": "Successfully get data vendor",
     "data": {
-        "id": "c694daa6-76d0-4909-be58-9f57a6bd326d"
         "name": "PT Akina",
+        "id": "c694daa6-76d0-4909-be58-9f57a6bd326d"
     }
 }
 ```
@@ -299,8 +299,8 @@ Jika bucket pengguna kehabisan token, permintaan berikutnya akan ditolak dengan 
 If you have any feedback, please contact us via email at adityae@duck.com
 
 
-## License
+## Link
 
-[Rifky Aditya](www.linkedin.com/in/mrifkyaditya)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mrifkyaditya/)
 
 

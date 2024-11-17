@@ -30,7 +30,7 @@ public class VendorController {
             Vendor vendor = vendorService.createVendor(request);
             BaseResponse response = CommonResponse.<Vendor>builder()
                     .statusCode(HttpStatus.OK.value())
-                    .message("successfully update data vendor")
+                    .message("successfully create data vendor")
                     .data(vendor)
                     .build();
 
