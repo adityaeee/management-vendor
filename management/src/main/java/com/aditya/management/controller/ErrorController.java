@@ -42,7 +42,7 @@ public class ErrorController {
             builder.message("Internal Server Error");
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        
+
         return ResponseEntity
                 .status(httpStatus)
                 .body(builder.build());
