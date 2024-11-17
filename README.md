@@ -6,16 +6,17 @@ Sebuah sistem CRUD dasar dalam manajemen vendor yang mengimplementasikan fitur s
 
 # Usage
 
-- Java version 17 (Spring Boot)
+- Java version 17 
+- Framework Spring Boot
 - Maven
-- PostgreSQL (pgadmin4)
+- Database PostgreSQL (pgadmin4)
 - Postman APIs testing
 - Intellij IDEA code editor
 
 
-# Installation
+#  Run Locally
 
-- Install dependensi sistem management vendor dengan menggunakan Maven, jika menggunakan intellij bisa langsung klik icon maven, atau bisa dengan perintah berikut:
+- Setelah repository ini di clone, Install dependensi sistem management vendor dengan menggunakan Maven, jika menggunakan intellij bisa langsung klik icon maven, atau bisa dengan perintah berikut:
 ```cmd
 mvn install
 ```
@@ -48,6 +49,9 @@ by default akun super adminnya terinisialisasi segera setelah program dijalankan
 
 
 # API Reference
+Untuk melakukan pengujian API, Anda dapat menggunakan Postman. Berikut ini adalah file ekspor dari API Management Vendor. Silakan unduh dan impor file tersebut ke Postman jika diperlukan
+
+[![GPLv3 Collection](https://img.shields.io/badge/Collection-Postman-yellow.svg)](https://github.com/adityaeee/management-vendor/blob/master/Vendor%20Management.postman_collection.json)
 
 ## Auth
 
@@ -290,6 +294,13 @@ Jika bucket pengguna kehabisan token, permintaan berikutnya akan ditolak dengan 
 
 - Token di bucket akan otomatis terisi ulang berdasarkan interval waktu yang ditentukan (60 detik).
 
+## Feedback
 
+If you have any feedback, please contact us via email at adityae@duck.com
+
+
+## License
+
+[Rifky Aditya](www.linkedin.com/in/mrifkyaditya)
 
 
